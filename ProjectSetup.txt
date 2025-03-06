@@ -1,0 +1,24 @@
+-> To setup react the Project here is command 
+
+npm create vite@latest my-app -- --template react
+Link https://www.youtube.com/watch?v=RjzTBfX79Cc&t=165s
+Tailwind https://tailwindcss.com/docs/installation/using-vite
+
+-> Create the Node Project setup with express 
+npm init
+npm install express 
+npm install -g nodemon // npm install --save-dev nodemon
+
+-> use 
+    "start": "nodemon index.js"
+node index.js // npm start
+
+-> To config with Database sql 
+npm install mysql2
+npm install cors
+
+-> LogError to me the current timestamp 
+npm install moment
+
+-> API stand for application programming interface 
+ 
