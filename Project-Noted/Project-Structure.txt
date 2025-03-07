@@ -1,0 +1,27 @@
+Project NEA SYSTEM 
+-------------------
+Technology 
++ Client-Side 
+-> ReactJS + Feature 
+
+ ( Authetication ) 
+- Login & Logout 
+- User Role In System 
+- User Permission Module In System 
+- 
+- Registeration 
+- Live Vacacy
+- Employee 
+- Employee Payroll 
+- CV 
+- Interview 
+
+( Logic )
+- Export CSV & Excel 
+- Export pdf 
+- Input Form 
+- Generate Reports 
+- filter Data by Date 
+
++ Backend-Side
+-> NodeJS 
