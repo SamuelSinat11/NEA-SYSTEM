@@ -1,7 +1,7 @@
 const express = require("express"); // import express modules 
 const app = express(); // app extend
 const cors = require("cors"); 
-app.use(cors({origin: "http://localhost:3000"})); // cors origin
+app.use(cors({origin: "*"})); // cors origin
 app.use(express.json()); // json body from client 
 
 // import route 

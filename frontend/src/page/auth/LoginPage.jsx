@@ -1,20 +1,42 @@
 import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
+import { request } from '../../util/request';
+import { useState } from 'react';
+import { setAccessToken, setRefreshToken, setUser } from '../../util/service';
 
 const { Title } = Typography;
 
 const LoginPage = () => {
-  const onFinish = (values) => {
+
+  const [message, setMessage] = useState("");
+
+
+  const onFinish = async (values) => {
     console.log('Received values of form: ', values);
+    // Call API to Login 
+    var param = { 
+      "Username" : values.Username, 
+      "Password" : values.Password,
+    }; 
+    // create function
+    const res = await request("users/login", "post", param); 
+    if (res.message) {
+      setMessage(res.message);
+      setUser(res.user); 
+      setIsLogin("1"); 
+      setAccessToken(res.access_token);
+      setRefreshToken(res.refresh_token);  
+    }
   };
 
   return (
     <div className="flex min-h-screen bg-gray-100 items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6 space-y-6">
         <div className="text-center">
+          
           <img className='w-40 h-40 mx-auto mb-3' src="./src/assets/nea.png" alt="" />
-          <p className="text-gray-500">Please log in to your account</p>
+          <p className="text-gray-500">Please login to your account</p>
         </div>
 
         <Form
