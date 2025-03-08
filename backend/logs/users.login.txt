@@ -1,0 +1,6 @@
+[2025-03-08 12:24:55] TypeError: Cannot read properties of undefined (reading 'Password')
+
+[2025-03-08 12:28:00] ReferenceError: bcrypt is not defined
+
+[2025-03-08 12:28:08] ReferenceError: bcrypt is not defined
+

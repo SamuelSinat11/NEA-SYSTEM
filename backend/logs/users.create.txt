@@ -1,0 +1,54 @@
+[2025-03-08 11:35:51] Error: Duplicate entry 'Manager' for key 'Username'
+
+[2025-03-08 12:02:00] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:03:47] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:03:54] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:04:03] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:05:35] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:06:11] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:09:50] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:12:04] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:14:07] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:14:38] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:14:39] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:16:34] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:17:24] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:18:00] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:18:14] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:18:33] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:18:48] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:21:19] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:30:38] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:35:35] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:37:40] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:38:19] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:38:28] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:38:50] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 12:58:13] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+
+[2025-03-08 13:01:01] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
+

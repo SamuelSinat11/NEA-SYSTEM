@@ -1,0 +1,12 @@
+[2025-03-08 11:50:28] Error: Unknown column 'uusers.RoleId' in 'on clause'
+
+[2025-03-08 11:50:32] Error: Unknown column 'uusers.RoleId' in 'on clause'
+
+[2025-03-08 11:50:33] Error: Unknown column 'uusers.RoleId' in 'on clause'
+
+[2025-03-08 11:50:33] Error: Unknown column 'uusers.RoleId' in 'on clause'
+
+[2025-03-08 11:50:44] Error: Unknown column 'uusers.RoleId' in 'on clause'
+
+[2025-03-08 11:50:52] Error: Unknown column 'uusers.RoleId' in 'on clause'
+

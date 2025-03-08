@@ -4,6 +4,7 @@ npm create vite@latest my-app -- --template react
 Link https://www.youtube.com/watch?v=RjzTBfX79Cc&t=165s
 Tailwind https://tailwindcss.com/docs/installation/using-vite
 
+Backend 
 -> Create the Node Project setup with express 
 npm init
 npm install express 
@@ -19,6 +20,13 @@ npm install cors
 
 -> LogError to me the current timestamp 
 npm install moment
+-> Auth
+npm i bcrypt
+
+1234 => asedtjkwl;eriozsdf (store in db)
+
+
+
 
 -> API stand for application programming interface 
  
