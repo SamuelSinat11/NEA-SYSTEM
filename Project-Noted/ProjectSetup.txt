@@ -23,6 +23,9 @@ npm install moment
 -> Auth
 npm i bcrypt
 
+-> Use JWT to make your API private and Protech Data 
+npm i jsonwebtoken
+
 1234 => asedtjkwl;eriozsdf (store in db)
 
 

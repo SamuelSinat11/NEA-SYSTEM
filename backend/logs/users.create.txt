@@ -52,3 +52,11 @@
 
 [2025-03-08 13:01:01] Error: Cannot add or update a child row: a foreign key constraint fails (`nea_system`.`users`, CONSTRAINT `users_ibfk_1` FOREIGN KEY (`RoleId`) REFERENCES `role` (`Id`))
 
+[2025-03-09 13:27:38] ReferenceError: RoleId is not defined
+
+[2025-03-09 13:28:16] ReferenceError: RoleId is not defined
+
+[2025-03-09 13:29:14] Error: Duplicate entry 'Adm44' for key 'Username'
+
+[2025-03-09 13:31:19] Error: Duplicate entry 'Adm44' for key 'Username'
+
