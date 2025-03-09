@@ -131,6 +131,7 @@ const login = async (req, res) => {
             message: "Login Success",
             user: user, 
             access_token: access_token, 
+            
         });
     } catch (err) {
         logError("users.login", err, res);

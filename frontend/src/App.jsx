@@ -14,8 +14,8 @@ const App = () => {
           <Route path="*" element={<h1>404-Route Not Found </h1>} />
         </Route>
 
-
-        <Route path="/Login" element={<LoginPage />} />
+        <Route element={<LoginPage />} path="/login" />
+        
         <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>

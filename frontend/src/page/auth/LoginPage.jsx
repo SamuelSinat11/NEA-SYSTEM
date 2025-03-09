@@ -2,31 +2,38 @@ import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import { request } from '../../util/request';
-import { useState } from 'react';
 import { setAccessToken, setRefreshToken, setUser } from '../../util/service';
-
+import { setIsLogin } from '../../util/service';
 const { Title } = Typography;
 
 const LoginPage = () => {
 
-  const [message, setMessage] = useState("");
-
 
   const onFinish = async (values) => {
     console.log('Received values of form: ', values);
-    // Call API to Login 
-    var param = { 
-      "Username" : values.Username, 
-      "Password" : values.Password,
-    }; 
-    // create function
-    const res = await request("users/login", "post", param); 
-    if (res.message) {
-      setMessage(res.message);
-      setUser(res.user); 
-      setIsLogin("1"); 
-      setAccessToken(res.access_token);
-      setRefreshToken(res.refresh_token);  
+  
+    const param = { 
+      Username: values.Username, // Match API field names (if required)
+      Password: values.Password, 
+    };
+  
+    try {
+      const res = await request("users/login", "post", param);
+  
+      console.log("API Response:", res); // Debugging
+  
+      if (res?.status === 200) { // Ensure successful login
+        setUser(res.data.user); 
+        setIsLogin(true); 
+        setAccessToken(res.data.access_token);
+        setRefreshToken(res.data.refresh_token);
+        window.location.href = "/home";
+      } else {
+        setMessage(res?.data?.message || "Invalid login credentials");
+      }
+    } catch (error) {
+      console.error("API Request Error:", error);
+      setMessage("Login failed. Please check your credentials.");
     }
   };
 
