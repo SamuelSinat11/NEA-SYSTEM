@@ -4,6 +4,7 @@ import RegisterPage from "./page/auth/RegisterPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import HomePage from "./page/home/HomePage";
+import SeekersPage from "./page/seekers/seekersPage";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
         <Route element ={<MainLayout />}>
           <Route path="/home" element={<HomePage />} />
+          <Route path="/seekers" element={<SeekersPage />} />
           <Route path="*" element={<h1>404-Route Not Found </h1>} />
         </Route>
 

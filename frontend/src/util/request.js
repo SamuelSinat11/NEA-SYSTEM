@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_url = "http://localhost:8082/api/";
+const base_url = "http://localhost:8081/api/";
 
 export const request = async (url = "", method = "get", data = {}) => {
   return axios 
