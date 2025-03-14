@@ -1,0 +1,4 @@
+[2025-03-11 13:05:28] Error: Table 'nea_system.categorys' doesn't exist
+
+[2025-03-11 13:05:36] Error: Table 'nea_system.categorys' doesn't exist
+

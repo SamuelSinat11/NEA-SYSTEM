@@ -8,11 +8,16 @@ app.use(express.json()); // json body from client
 const {users} = require("./src/route/users.route.js");
 const {category} = require("./src/route/category.route.js");
 const {role} = require("./src/route/role.route.js");
+const {seeker} = require("./src/route/seeker.route.js");
+
 
 // call route 
 category(app); 
 role(app); 
 users(app); 
+seeker(app); 
+
+
 
 
 app.get("/", (req, res) => { 

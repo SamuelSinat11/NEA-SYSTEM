@@ -1,0 +1,2 @@
+[2025-03-14 11:35:14] Error: Unknown column 'status' in 'field list'
+

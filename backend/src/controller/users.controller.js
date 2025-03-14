@@ -3,6 +3,9 @@ const { db } = require("../config/db.js");
 const { logError, isEmptyOrNull } = require("../config/service.js");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { promisify } = require("util");
+
+const verifyToken = promisify(jwt.verify); // Convert jwt.verify() to promise-based
 
 // Get all users with role names
 const getAll = async (req, res) => {
@@ -18,10 +21,14 @@ const getAll = async (req, res) => {
 // Get a specific user by ID
 const getOne = async (req, res) => {
     try {
-        const sql = "SELECT * FROM users WHERE id = ?";
+        const sql = "SELECT * FROM users WHERE Id = ?";
         const [data] = await db.query(sql, [req.params.id]);
 
-        res.json({ list: data });
+        if (data.length === 0) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json({ user: data[0] });
     } catch (err) {
         logError("users.getOne", err, res);
     }
@@ -43,9 +50,9 @@ const create = async (req, res) => {
         const hashPassword = await bcrypt.hash(Password, 10);
 
         const sql = "INSERT INTO users (Username, Password) VALUES (?, ?)";
-        const [list] = await db.query(sql, [Username, hashPassword]);
+        const [result] = await db.query(sql, [Username, hashPassword]);
 
-        res.json({ list });
+        res.json({ message: "User created successfully", userId: result.insertId });
     } catch (err) {
         logError("users.create", err, res);
     }
@@ -67,9 +74,9 @@ const update = async (req, res) => {
         const hashPassword = await bcrypt.hash(Password, 10);
 
         const sql = "UPDATE users SET Password = ? WHERE Id = ?";
-        const [list] = await db.query(sql, [hashPassword, id]);
+        await db.query(sql, [hashPassword, id]);
 
-        res.json({ list });
+        res.json({ message: "Password updated successfully" });
     } catch (err) {
         logError("users.update", err, res);
     }
@@ -88,9 +95,9 @@ const remove = async (req, res) => {
         }
 
         const sql = "DELETE FROM users WHERE Id = ?";
-        const [list] = await db.query(sql, [id]);
+        await db.query(sql, [id]);
 
-        res.json({ list });
+        res.json({ message: "User deleted successfully" });
     } catch (err) {
         logError("users.remove", err, res);
     }
@@ -125,19 +132,21 @@ const login = async (req, res) => {
 
         delete user.Password;
         // generate JWT 
-        var access_token = await jwt.sign({data:user}, Config.ACCESS_TOKEN_KEY, {expiresIn: "1d"});
+        const access_token = jwt.sign({ data: user }, Config.ACCESS_TOKEN_KEY, { expiresIn: "1d" });
+        const refresh_token = jwt.sign({ data: user }, Config.REFRESH_TOKEN_KEY);
 
         res.json({
             message: "Login Success",
-            user: user, 
-            access_token: access_token, 
-            
+            user,
+            access_token,
+            refresh_token,
         });
     } catch (err) {
         logError("users.login", err, res);
     }
 };
 
+// Validate token middleware
 const validate_token = () => {
     return (req, res, next) => {
         try {
@@ -164,6 +173,50 @@ const validate_token = () => {
     };
 };
 
+// Refresh token
+const refresh_token = async (req, res) => {
+    try {
+        const { refresh_token } = req.body;
+
+        if (!refresh_token) {
+            return res.status(400).json({ message: "Refresh token is required" });
+        }
+
+        const result = await verifyToken(refresh_token, Config.REFRESH_TOKEN_KEY);
+
+        if (!result || !result.data) {
+            return res.status(401).json({ message: "Unauthorized: Invalid token" });
+        }
+
+        const user_from_token = result.data;
+
+        // Fetch user from DB
+        const [data] = await db.query("SELECT * FROM users WHERE Id = ?", [user_from_token.Id]);
+
+        if (!data.length) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const user = data[0];
+        delete user.Password;
+
+        // Generate new tokens
+        const access_token = jwt.sign({ data: user }, Config.ACCESS_TOKEN_KEY, { expiresIn: "1d" });
+        const new_refresh_token = jwt.sign({ data: user }, Config.REFRESH_TOKEN_KEY);
+
+        return res.json({
+            message: "Refresh token success",
+            user,
+            access_token,
+            refresh_token: new_refresh_token,
+        });
+
+    } catch (err) {
+        console.error("Refresh Token Error:", err);
+        return res.status(500).json({ message: "Internal server error", error: err.message });
+    }
+};
+
 module.exports = {
     getAll,
     getOne,
@@ -171,5 +224,6 @@ module.exports = {
     update,
     remove,
     login,
-    validate_token
+    validate_token, 
+    refresh_token,
 };

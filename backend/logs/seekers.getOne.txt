@@ -1,0 +1,4 @@
+[2025-03-14 11:21:14] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Roll_id = NULL' at line 1
+
+[2025-03-14 11:21:20] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Roll_id = NULL' at line 1
+

@@ -2,7 +2,7 @@ const {getAll, create, update, remove, getOne, multiple} = require ("../controll
 
 const role = (app) => { 
     
-    app.get("/api/role", getAll); 
+    app.get("/api/role",  getAll); 
     app.get("/api/role/:role_id", getOne); 
     app.post("/api/role/create", create);
     app.post("/api/role/create/multiple", multiple)

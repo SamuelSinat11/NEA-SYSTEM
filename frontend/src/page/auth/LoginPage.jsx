@@ -7,35 +7,25 @@ import { setIsLogin } from '../../util/service';
 const { Title } = Typography;
 
 const LoginPage = () => {
-
+  const [message, setMessage] = useState('');
 
   const onFinish = async (values) => {
-    console.log('Received values of form: ', values);
-  
-    const param = { 
-      Username: values.Username, // Match API field names (if required)
-      Password: values.Password, 
-    };
-  
-    try {
-      const res = await request("users/login", "post", param);
-  
-      console.log("API Response:", res); // Debugging
-  
-      if (res?.status === 200) { // Ensure successful login
-        setUser(res.data.user); 
-        setIsLogin(true); 
-        setAccessToken(res.data.access_token);
-        setRefreshToken(res.data.refresh_token);
-        window.location.href = "/home";
-      } else {
-        setMessage(res?.data?.message || "Invalid login credentials");
+    var param = { 
+      Username: values.username, 
+      Password: values.password,
+    }; 
+    const res = await request("users/login", "post", param); 
+    if (res.message) {
+      setMessage(res.message);
+    } else if (res.error){ 
+      if (res.error.Username) { 
+        setMessage(res.error.Username); 
       }
-    } catch (error) {
-      console.error("API Request Error:", error);
-      setMessage("Login failed. Please check your credentials.");
+      if (res.error.Password){ 
+        setMessage(res.error.Password);
+      }
     }
-  };
+  }; 
 
   return (
     <div className="flex min-h-screen bg-gray-100 items-center justify-center p-4">
@@ -43,7 +33,7 @@ const LoginPage = () => {
         <div className="text-center">
           
           <img className='w-40 h-40 mx-auto mb-3' src="./src/assets/nea.png" alt="" />
-          <p className="text-gray-500">Please login to your account</p>
+          <p className="text-gray-500">Please login to your account : </p>
         </div>
 
         <Form
