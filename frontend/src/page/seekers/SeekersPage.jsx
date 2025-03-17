@@ -3,6 +3,7 @@ import { Space, Table, Tag, Button, message, Modal, Input, Upload, Select, DateP
 import { request } from "../../util/request";
 import { MdEdit, MdDelete, MdAdd } from "react-icons/md";
 import { UploadOutlined } from "@ant-design/icons";
+import MainPage from "../../components/layout/MainPage";
 
 
 const { Option } = Select;
@@ -11,6 +12,7 @@ const SeekersPage = () => {
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+  
 
     const [state, setState] = useState({
         visibleModal: false,
@@ -50,11 +52,11 @@ const SeekersPage = () => {
     }, []);
 
     const getList = async () => {
-        setLoading(true);
-        setError(null);
 
         try {
-            const res = await request("seeker");
+            setLoading(true);
+            const res = await request("seeker"); 
+            setLoading(false);
             if (res && res.list) {
                 setList(res.list);
             } else {
@@ -186,6 +188,7 @@ const SeekersPage = () => {
     };
 
     return (
+      <MainPage loading={loading}>
         <div>
             <Button className="mb-4" type="primary" icon={<MdAdd />} onClick={onClickAddBtn}>New</Button>
 
@@ -196,194 +199,205 @@ const SeekersPage = () => {
                 onCancel={onCloseModal}
                 width={600}
             >
-               <div className="form-container" style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+               
   {/* Form row with two columns */}
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Full Name:</label>
-      <Input
-        placeholder="Full Name"
-        value={state.seekerData.FullName}
-        onChange={(e) => handleInputChange(e, 'FullName')}
-      />
-    </div>
-    
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Gender:</label>
-      <Radio.Group onChange={handleGenderChange} value={state.seekerData.Gender}>
-        <Radio value="Male">Male</Radio>
-        <Radio value="Female">Female</Radio>
-        <Radio value="Other">Other</Radio>
-      </Radio.Group>
-    </div>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  {/* Full Name */}
+  <div>
+    <label className="block mb-1 font-medium">Full Name:</label>
+    <Input
+      placeholder="Full Name"
+      value={state.seekerData.FullName}
+      onChange={(e) => handleInputChange(e, 'FullName')}
+      className="w-full"
+    />
   </div>
-  
-  {/* Form row with two columns */}
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Date of Birth:</label>
-      <DatePicker 
-        style={{ width: "100%" }}
-        onChange={handleDateChange}
-        format="YYYY-MM-DD"
-        placeholder="Select date of birth"
-      />
-    </div>
-    
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Place of Birth:</label>
-      <Input
-        placeholder="Place of Birth"
-        value={state.seekerData.POB}
-        onChange={(e) => handleInputChange(e, 'POB')}
-      />
-    </div>
+
+  {/* Gender */}
+  <div>
+    <label className="block mb-1 font-medium">Gender:</label>
+    <Radio.Group onChange={handleGenderChange} value={state.seekerData.Gender}>
+      <Radio value="Male">Male</Radio>
+      <Radio value="Female">Female</Radio>
+      <Radio value="Other">Other</Radio>
+    </Radio.Group>
   </div>
-  
-  {/* Form row with two columns */}
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Phone Number:</label>
-      <Input
-        placeholder="Phone Number"
-        value={state.seekerData.PhoneNumber}
-        onChange={(e) => handleInputChange(e, 'PhoneNumber')}
-      />
-    </div>
-    
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Applied For:</label>
-      <Input
-        placeholder="Applied For"
-        value={state.seekerData.AppliedFor}
-        onChange={(e) => handleInputChange(e, 'AppliedFor')}
-      />
-    </div>
+
+  {/* Date of Birth */}
+  <div>
+    <label className="block mb-1 font-medium">Date of Birth:</label>
+    <DatePicker
+      className="w-full"
+      onChange={handleDateChange}
+      format="YYYY-MM-DD"
+      placeholder="Select date of birth"
+    />
   </div>
-  
-  {/* Form row with two columns */}
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Skill:</label>
-      <Input
-        placeholder="Skill"
-        value={state.seekerData.Skill}
-        onChange={(e) => handleInputChange(e, 'Skill')}
-      />
-    </div>
-    
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Education Level:</label>
-      <Select
-        placeholder="Select Education Level"
-        style={{ width: "100%" }}
-        value={state.seekerData.Education || undefined}
-        onChange={(value) => handleSelectChange(value, 'Education')}
-        allowClear
-      >
-        {educationOptions.map(option => (
-          <Option key={option} value={option}>{option}</Option>
-        ))}
-      </Select>
-    </div>
+
+  {/* Place of Birth */}
+  <div>
+    <label className="block mb-1 font-medium">Place of Birth:</label>
+    <Input
+      placeholder="Place of Birth"
+      value={state.seekerData.POB}
+      onChange={(e) => handleInputChange(e, 'POB')}
+      className="w-full"
+    />
   </div>
-  
-  {/* Form row with two columns */}
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Company:</label>
-      <Input
-        placeholder="Company"
-        value={state.seekerData.Company}
-        onChange={(e) => handleInputChange(e, 'Company')}
-      />
-    </div>
-    
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Position:</label>
-      <Input
-        placeholder="Position"
-        value={state.seekerData.Position}
-        onChange={(e) => handleInputChange(e, 'Position')}
-      />
-    </div>
+
+  {/* Phone Number */}
+  <div>
+    <label className="block mb-1 font-medium">Phone Number:</label>
+    <Input
+      placeholder="Phone Number"
+      value={state.seekerData.PhoneNumber}
+      onChange={(e) => handleInputChange(e, 'PhoneNumber')}
+      className="w-full"
+    />
   </div>
-  
-  {/* Form row with two columns */}
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>ISIC4:</label>
-      <Input
-        placeholder="ISIC4"
-        value={state.seekerData.ISIC4}
-        onChange={(e) => handleInputChange(e, 'ISIC4')}
-      />
-    </div>
-    
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Salary:</label>
-      <Input
-        placeholder="Salary"
-        value={state.seekerData.Salary}
-        onChange={(e) => handleInputChange(e, 'Salary')}
-      />
-    </div>
+
+  {/* Applied For */}
+  <div>
+    <label className="block mb-1 font-medium">Applied For:</label>
+    <Input
+      placeholder="Applied For"
+      value={state.seekerData.AppliedFor}
+      onChange={(e) => handleInputChange(e, 'AppliedFor')}
+      className="w-full"
+    />
   </div>
-  
-  {/* Form row with two columns */}
-  <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Remarks:</label>
-      <Input.TextArea
-        placeholder="Remarks"
-        value={state.seekerData.Remarks}
-        onChange={(e) => handleInputChange(e, 'Remarks')}
-        rows={3}
-      />
-    </div>
-    
-    <div style={{ flex: "1 1 300px" }}>
-      <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Status:</label>
-      <Select
-        placeholder="Select Status"
-        style={{ width: "100%" }}
-        value={state.seekerData.Status || undefined}
-        onChange={(value) => handleSelectChange(value, 'Status')}
-      >
-        <Option value="1">Active</Option>
-        <Option value="0">Inactive</Option>
-      </Select>
-      
-      <div style={{ marginTop: "16px" }}>
-        <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>Suggest By:</label>
-        <Input
-          placeholder="Suggest By"
-          value={state.seekerData.SuggestBy}
-          onChange={(e) => handleInputChange(e, 'SuggestBy')}
-        />
-      </div>
-    </div>
+
+  {/* Skill */}
+  <div>
+    <label className="block mb-1 font-medium">Skill:</label>
+    <Input
+      placeholder="Skill"
+      value={state.seekerData.Skill}
+      onChange={(e) => handleInputChange(e, 'Skill')}
+      className="w-full"
+    />
   </div>
-  
-  {/* CV Upload Field - Full width */}
-  <div style={{ marginTop: "8px" }}>
-    <label style={{ display: "block", marginBottom: "5px", fontWeight: "500" }}>CV/Resume:</label>
-    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+
+  {/* Education Level */}
+  <div>
+    <label className="block mb-1 font-medium">Education Level:</label>
+    <Select
+      placeholder="Select Education Level"
+      className="w-full"
+      value={state.seekerData.Education || undefined}
+      onChange={(value) => handleSelectChange(value, 'Education')}
+      allowClear
+    >
+      {educationOptions.map(option => (
+        <Option key={option} value={option}>{option}</Option>
+      ))}
+    </Select>
+  </div>
+
+  {/* Company */}
+  <div>
+    <label className="block mb-1 font-medium">Company:</label>
+    <Input
+      placeholder="Company"
+      value={state.seekerData.Company}
+      onChange={(e) => handleInputChange(e, 'Company')}
+      className="w-full"
+    />
+  </div>
+
+  {/* Position */}
+  <div>
+    <label className="block mb-1 font-medium">Position:</label>
+    <Input
+      placeholder="Position"
+      value={state.seekerData.Position}
+      onChange={(e) => handleInputChange(e, 'Position')}
+      className="w-full"
+    />
+  </div>
+
+  {/* ISIC4 */}
+  <div>
+    <label className="block mb-1 font-medium">ISIC4:</label>
+    <Input
+      placeholder="ISIC4"
+      value={state.seekerData.ISIC4}
+      onChange={(e) => handleInputChange(e, 'ISIC4')}
+      className="w-full"
+    />
+  </div>
+
+  {/* Salary */}
+  <div>
+    <label className="block mb-1 font-medium">Salary:</label>
+    <Input
+      placeholder="Salary"
+      value={state.seekerData.Salary}
+      onChange={(e) => handleInputChange(e, 'Salary')}
+      className="w-full"
+    />
+  </div>
+
+  {/* Remarks - Full Width */}
+  <div className="col-span-1 sm:col-span-2">
+    <label className="block mb-1 font-medium">Remarks:</label>
+    <Input.TextArea
+      placeholder="Remarks"
+      value={state.seekerData.Remarks}
+      onChange={(e) => handleInputChange(e, 'Remarks')}
+      rows={3}
+      className="w-full"
+    />
+  </div>
+
+  {/* Status */}
+  <div>
+    <label className="block mb-1 font-medium">Status:</label>
+    <Select
+      placeholder="Select Status"
+      className="w-full"
+      value={state.seekerData.Status || undefined}
+      onChange={(value) => handleSelectChange(value, 'Status')}
+    >
+      <Option value="1">Active</Option>
+      <Option value="0">Inactive</Option>
+    </Select>
+  </div>
+
+  {/* Suggest By */}
+  <div>
+    <label className="block mb-1 font-medium">Suggest By:</label>
+    <Input
+      placeholder="Suggest By"
+      value={state.seekerData.SuggestBy}
+      onChange={(e) => handleInputChange(e, 'SuggestBy')}
+      className="w-full"
+    />
+  </div>
+
+  {/* CV Upload Field - Full Width */}
+  <div className="col-span-1 sm:col-span-2 mt-2">
+    <label className="block mb-1 font-medium">CV/Resume:</label>
+    <div className="flex items-center gap-3">
       <Upload
         customRequest={handleCVUpload}
         showUploadList={false}
         accept=".pdf,.doc,.docx,.txt"
         maxCount={1}
       >
-        <Button style={{ marginBottom: "8px" }} icon={<UploadOutlined />}>Upload CV</Button>
+        <Button className="mb-2" icon={<UploadOutlined />}>Upload CV</Button>
       </Upload>
-      <div style={{ flex: "1 1 auto " }}>
-        {state.seekerData.CV && <span>{state.seekerData.CV.name}</span>}
-        {!state.seekerData.CV && <span className="text-gray-400">No file selected</span>}
+      <div className="flex-1">
+        {state.seekerData.CV ? (
+          <span>{state.seekerData.CV.name}</span>
+        ) : (
+          <span className="text-gray-400">No file selected</span>
+        )}
       </div>
     </div>
   </div>
 </div>
+
 
                 <Space>
                     <Button onClick={onCloseModal}>Cancel</Button>
@@ -436,6 +450,7 @@ const SeekersPage = () => {
                 pagination={{ pageSize: 8 }}
             />
         </div>
+        </MainPage>
     );
 };
 

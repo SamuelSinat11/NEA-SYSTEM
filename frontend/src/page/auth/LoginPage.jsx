@@ -2,68 +2,61 @@ import React from 'react';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Form, Input, Typography } from 'antd';
 import { request } from '../../util/request';
-import { setAccessToken, setRefreshToken, setUser } from '../../util/service';
-import { setIsLogin } from '../../util/service';
+import { setAccessToken, setProfile } from '../../../store/profile.store';
+import { useNavigate } from 'react-router-dom';
 const { Title } = Typography;
 
 const LoginPage = () => {
-  const [message, setMessage] = useState('');
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
 
-  const onFinish = async (values) => {
-    var param = { 
-      Username: values.username, 
-      Password: values.password,
-    }; 
-    const res = await request("users/login", "post", param); 
-    if (res.message) {
-      setMessage(res.message);
-    } else if (res.error){ 
-      if (res.error.Username) { 
-        setMessage(res.error.Username); 
+  const onLogin = async (item) => {
+    try {
+      const param = {
+        username: item.username,
+        password: item.password,
+      };
+
+      const res = await request("auth/login", "post", param);
+
+      if (res && !res.error) {
+        setAccessToken(res.access_token);
+        setProfile(JSON.stringify(res.profile));
+        navigate("/home");
+      } else {
+        alert(JSON.stringify(res));
       }
-      if (res.error.Password){ 
-        setMessage(res.error.Password);
-      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("An error occurred. Please try again.");
     }
-  }; 
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-100 items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6 space-y-6">
         <div className="text-center">
-          
-          <img className='w-40 h-40 mx-auto mb-3' src="./src/assets/nea.png" alt="" />
-          <p className="text-gray-500">Please login to your account : </p>
+          <img className="w-40 h-40 mx-auto mb-3" src="./src/assets/nea.png" alt="Logo" />
+          <p className="text-gray-500">Please login to your account:</p>
         </div>
 
         <Form
+          form={form}
           name="login"
-          initialValues={{
-            remember: true,
-          }}
+          initialValues={{ remember: true }}
           layout="vertical"
-          onFinish={onFinish}
+          onFinish={onLogin}
         >
           <Form.Item
             name="username"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your Username!',
-              },
-            ]}
+            rules={[{ required: true, message: 'Please input your Username!' }]}
           >
             <Input prefix={<UserOutlined />} placeholder="Username" size="large" />
           </Form.Item>
 
           <Form.Item
             name="password"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your Password!',
-              },
-            ]}
+            rules={[{ required: true, message: 'Please input your Password!' }]}
           >
             <Input.Password prefix={<LockOutlined />} placeholder="Password" size="large" />
           </Form.Item>
@@ -72,7 +65,7 @@ const LoginPage = () => {
             <Form.Item name="remember" valuePropName="checked" noStyle>
               <Checkbox>Remember me</Checkbox>
             </Form.Item>
-            <a href="" className="text-blue-600 hover:underline">Forgot password?</a>
+            <a href="#" className="text-blue-600 hover:underline">Forgot password?</a>
           </div>
 
           <Form.Item>
@@ -83,7 +76,7 @@ const LoginPage = () => {
 
           <div className="text-center">
             <span className="text-gray-500">Don’t have an account? </span>
-            <a href="" className="text-blue-600 hover:underline">Register now!</a>
+            <a href="#" className="text-blue-600 hover:underline">Register now!</a>
           </div>
         </Form>
       </div>

@@ -5,16 +5,16 @@ app.use(cors({origin: "*"})); // cors origin
 app.use(express.json()); // json body from client 
 
 // import route 
-const {users} = require("./src/route/users.route.js");
+const {auth} = require("./src/route/auth.route.js");
 const {category} = require("./src/route/category.route.js");
 const {role} = require("./src/route/role.route.js");
 const {seeker} = require("./src/route/seeker.route.js");
 
 
 // call route 
+auth(app);
 category(app); 
 role(app); 
-users(app); 
 seeker(app); 
 
 

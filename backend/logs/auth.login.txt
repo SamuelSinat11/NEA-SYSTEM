@@ -1,0 +1,36 @@
+[2025-03-15 12:22:40] TypeError: object is not iterable (cannot read property Symbol(Symbol.iterator))
+
+[2025-03-15 13:45:19] ReferenceError: data is not defined
+
+[2025-03-15 13:46:45] ReferenceError: keyToken is not defined
+
+[2025-03-15 13:46:51] ReferenceError: keyToken is not defined
+
+[2025-03-15 13:46:59] ReferenceError: keyToken is not defined
+
+[2025-03-15 13:52:48] ReferenceError: keyToken is not defined
+
+[2025-03-17 16:35:53] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:36:09] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:37:42] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:37:43] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:38:36] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:38:37] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:38:38] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:38:38] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:38:39] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:38:39] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:41:04] Error: Table 'nea_system.user' doesn't exist
+
+[2025-03-17 16:41:06] Error: Table 'nea_system.user' doesn't exist
+
