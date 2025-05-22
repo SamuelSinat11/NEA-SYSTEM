@@ -2,8 +2,27 @@ const { logError } = require("../config/service.js");
 const { db } = require("../config/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
 const keyToken = "your-secret-key"; // Ensure you set this securely
+
+const getList = async (req, res) => {
+    try {
+        let sql =
+        " SELECT " +
+        " u.id, " +
+        " u.name, " +
+        " u.username, " +
+        " u.is_active, " +
+        " r.name AS role_name " + // Removed the extra comma here
+        " FROM users u " +
+        " INNER JOIN role r ON (u.role_id = r.id)";
+        const [list] = await db.query(sql);
+        res.json({
+            list,
+        });
+    } catch (err) {
+        logError("auth.getList", err, res);
+    }
+};
 
 const register = async (req, res) => {
     try { 
@@ -125,5 +144,6 @@ module.exports = {
     register, 
     login, 
     profile,     
-    validate_token
+    validate_token, 
+    getList
 };

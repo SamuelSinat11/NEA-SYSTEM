@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./components/layout/MainLayout";
 import HomePage from "./page/home/HomePage";
 import SeekersPage from "./page/seekers/seekersPage";
+import RolePage from "./page/role/RolePage";
+import UserPage from "./page/user/UserPage";
 
 const App = () => {
   return (
@@ -12,6 +14,8 @@ const App = () => {
       <Routes>
         <Route element ={<MainLayout />}>
           <Route path="/home" element={<HomePage />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/role" element={<RolePage />} />
           <Route path="/seekers" element={<SeekersPage />} />
           <Route path="*" element={<h1>404-Route Not Found </h1>} />
         </Route>

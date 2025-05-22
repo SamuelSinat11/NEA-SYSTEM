@@ -1,0 +1,20 @@
+[2025-05-22 15:14:53] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:15:16] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:15:37] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:16:08] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:17:11] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:17:12] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:17:18] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:17:24] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:17:27] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+
+[2025-05-22 15:18:41] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM users u  INNER JOIN role r ON (u.role_id = r.id)' at line 1
+

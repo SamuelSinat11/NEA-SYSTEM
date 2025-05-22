@@ -10,4 +10,6 @@
 > npx shadcn-ui@latest init
 > npx shadcn-ui@latest add card
 > npm install recharts lucide-react
+> npm install --save react-google-charts
+> npm install zustand
 

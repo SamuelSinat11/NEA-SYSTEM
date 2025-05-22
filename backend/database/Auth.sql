@@ -29,3 +29,12 @@ ALTER TABLE users ADD FOREIGN KEY (role_id) REFERENCES role(id);
 -- Join Data 
 SELECT u.*, r.name as role_name FROM users u INNER JOIN role r ON (u.role_id = r.id);
 
+-- Query 
+SELECT 
+u.id, 
+u.name, 
+u.username,
+u.is_active,
+r.name AS role_name
+FROM users u
+INNER JOIN role r ON (u.role_id = r.id);

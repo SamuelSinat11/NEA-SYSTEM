@@ -64,6 +64,7 @@ const items = [
   getItem('User', '/user', <GroupOutlined />, [
     getItem('Role', '/role'),
     getItem('User', '/user'),
+    getItem('Role Permission', '/role_permission'),
   ]),
 
   // --- New Setting Item ---
