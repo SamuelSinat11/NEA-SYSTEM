@@ -37,14 +37,14 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     try { 
         let { username, password } = req.body;
-        // let sql = 
-        //     "SELECT" + 
-        //     " u.*," + 
-        //     " r.name as role_name" + 
-        //     " FROM user u" + 
-        //     " INNER JOIN role r ON u.role_id = r.id" + 
-        //     " WHERE u.username = :username";
-        let sql = "SELECT * FROM users WHERE username = :username";
+        let sql = 
+            "SELECT" + 
+            " u.*," + 
+            " r.name as role_name" + 
+            " FROM users u" + 
+            " INNER JOIN role r ON u.role_id = r.id" + 
+            " WHERE u.username = :username";
+        
         let [data] = await db.query(sql, { username });
 
         if (data.length === 0) {

@@ -18,8 +18,6 @@ role(app);
 seeker(app); 
 
 
-
-
 app.get("/", (req, res) => { 
     res.send("Hello Express and Node.js "); 
 }); 

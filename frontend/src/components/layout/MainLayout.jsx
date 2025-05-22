@@ -1,11 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import {
+  // Existing icons (keep if still used)
   DesktopOutlined,
   FileOutlined,
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
-  SettingOutlined,
+  SettingOutlined, // Make sure SettingOutlined is imported!
+
+  // Suggested new icons based on meaning
+  DashboardOutlined,
+  ShoppingCartOutlined,
+  TagOutlined,
+  ContainerOutlined,
+  ShoppingOutlined,
+  DollarCircleOutlined,
+  BankOutlined,
+  SolutionOutlined,
+  GroupOutlined,
+  // Plus any others you might find suitable
 } from '@ant-design/icons';
 
 import { Breadcrumb, Dropdown, Layout, Menu, theme } from 'antd';
@@ -22,18 +35,40 @@ const getItem = (label, key, icon, children) => ({
 });
 
 const items = [
-  getItem('Dashboard', '/home', <PieChartOutlined />),
-  getItem('Seekers', '/seekers', <DesktopOutlined />),
-  getItem('User', '/user', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
+  getItem('Dashboard', '/home', <DashboardOutlined />),
+  getItem('Product', '/product', <ContainerOutlined />),
+  getItem('POS', '/pos', <ShoppingCartOutlined />),
+  getItem('Category', '/category', <TagOutlined />),
+
+  getItem('Order', '/order', <ShoppingOutlined />, [
+    getItem('List Product', '/orderlist'),
+    getItem('Category', '/categorylist'),
   ]),
-  getItem('Interview', 'sub2', <TeamOutlined />, [
-    getItem('Team 1', '6'),
-    getItem('Team 2', '8'),
+
+  getItem('Purchase', '/purchase', <DollarCircleOutlined />, [
+    getItem('Supplier', '/supplier'),
+    getItem('Purchase', '/purchase'),
+    getItem('Purchase Details', '/purchasedetails'),
   ]),
-  getItem('CV', '9', <FileOutlined />),
+
+  getItem('Expanses', '/expanses', <BankOutlined />, [
+    getItem('Expanses Type', '/expansestype'),
+    getItem('Expanses', '/expanses_create'),
+  ]),
+
+  getItem('Employee', '/employee', <SolutionOutlined />, [
+    getItem('Payroll', '/payroll'),
+    getItem('Employee', '/employee_create'),
+  ]),
+
+  getItem('User', '/user', <GroupOutlined />, [
+    getItem('Role', '/role'),
+    getItem('User', '/user'),
+  ]),
+
+  // --- New Setting Item ---
+  getItem('Settings', '/settings', <SettingOutlined />), // Added the Settings item here
+  // ---
 ];
 
 const MainLayout = () => {
@@ -73,7 +108,7 @@ const MainLayout = () => {
     <Menu
       items={[
         { key: '1', label: 'Profile', icon: <UserOutlined /> },
-        { key: '2', label: 'Settings', icon: <SettingOutlined /> },
+        { key: '2', label: 'Settings', icon: <SettingOutlined />, onClick: () => navigate('/settings') }, // Added onClick for settings in dropdown
         { key: '4', label: 'Register', icon: <FileOutlined /> },
         { key: '3', label: 'Logout', danger: true, icon: <UserOutlined />, onClick: onLogout },
       ]}
@@ -109,10 +144,10 @@ const MainLayout = () => {
                 <Dropdown overlay={profileMenu} trigger={['click']}>
                   <div className="flex flex-col text-right cursor-pointer">
                     <div className="text-white font-semibold hover:text-blue-300 transition">{profile?.name}</div>
-                    <span className="text-gray-300 text-sm">Admin</span>
+                    <span className="text-gray-300 text-sm">{profile?.role_name}</span>
                   </div>
                 </Dropdown>
-              
+
                 <img className="w-10 h-10 rounded-full object-cover border-2 border-white" src="./src/assets/nea.png" alt="Profile" />
               </div>
             </div>
@@ -122,7 +157,7 @@ const MainLayout = () => {
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
           <div style={{ padding: 24, minHeight: 360, background: colorBgContainer, borderRadius: borderRadiusLG }}>
-            
+
             <Outlet />
           </div>
         </Content>

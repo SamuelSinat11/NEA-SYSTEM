@@ -28,6 +28,9 @@ npm i jsonwebtoken
 
 1234 => asedtjkwl;eriozsdf (store in db)
 
+client side frontend 
+npm i zustand
+
 
 
 

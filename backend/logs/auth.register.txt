@@ -1,0 +1,2 @@
+[2025-03-21 13:54:49] Error: Table 'nea_system.users' doesn't exist in engine
+

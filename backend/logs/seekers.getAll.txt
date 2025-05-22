@@ -1,0 +1,116 @@
+[2025-03-21 14:21:06] Error: Table 'migrations_nea.seekers' doesn't exist
+
+[2025-03-21 14:21:06] Error: Table 'migrations_nea.seekers' doesn't exist
+
+[2025-03-21 14:21:12] Error: Table 'migrations_nea.seekers' doesn't exist
+
+[2025-03-21 14:21:12] Error: Table 'migrations_nea.seekers' doesn't exist
+
+[2025-05-22 09:09:50] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:09:50] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:09:51] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:09:51] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:09:53] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:09:53] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:09:54] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:09:54] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:10:00] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:10:00] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:20] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:20] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:21] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:21] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:24] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:24] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:29] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:29] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:31] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:26:31] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:31:25] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:31:25] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:42] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:42] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:44] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:44] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:51] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:51] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:52] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 09:33:52] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:25] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:25] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:26] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:26] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:44] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:44] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:45] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:00:45] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:12:07] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:12:07] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:12:08] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:12:08] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:23:43] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:23:43] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:23:44] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:23:44] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:53:49] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:53:49] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:53:50] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:53:50] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:55:35] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:55:35] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:57:33] Error: Table 'db_testing.seekers' doesn't exist
+
+[2025-05-22 13:57:33] Error: Table 'db_testing.seekers' doesn't exist
+

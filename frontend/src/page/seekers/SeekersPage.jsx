@@ -397,8 +397,6 @@ const SeekersPage = () => {
     </div>
   </div>
 </div>
-
-
                 <Space>
                     <Button onClick={onCloseModal}>Cancel</Button>
                     <Button type="primary" onClick={handleSave}>Save</Button>

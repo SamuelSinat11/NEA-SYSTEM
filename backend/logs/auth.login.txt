@@ -34,3 +34,21 @@
 
 [2025-03-17 16:41:06] Error: Table 'nea_system.user' doesn't exist
 
+[2025-03-21 13:47:18] Error: connect ETIMEDOUT
+
+[2025-03-21 13:47:22] Error: connect ETIMEDOUT
+
+[2025-03-21 13:50:25] Error: read ECONNRESET
+
+[2025-03-21 13:53:56] Error: Table 'nea_system.users' doesn't exist in engine
+
+[2025-03-21 13:54:00] Error: Table 'nea_system.users' doesn't exist in engine
+
+[2025-03-21 13:54:05] Error: Table 'nea_system.users' doesn't exist in engine
+
+[2025-03-21 13:55:48] Error: Table 'nea_system.users' doesn't exist in engine
+
+[2025-03-21 13:56:49] Error: Table 'nea_system.users' doesn't exist in engine
+
+[2025-05-22 13:51:09] Error: Table 'db_testing.user' doesn't exist
+
