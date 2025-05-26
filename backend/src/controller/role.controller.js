@@ -33,16 +33,15 @@ const getOne = async (req, res) => {
 // create the role data using api 
 const create = async(req, res) => {
     try { 
-        var sql = "INSERT INTO role(name, code, status) VALUES (:name, :code, :status)"; 
-        var param = {
+        var sql = "INSERT INTO role(name, code) VALUES (:name, :code)"; 
+        var [data] = await db.query(sql, {
             name: req.body.name, 
             code: req.body.code, 
-            status: req.body.status, 
-        }
+        }); 
 
-        const [data] = await db.query(sql, param); 
         res.json({ 
             data: data, 
+            message: "Insert success!",
         });
     } catch(err) {
         logError("role.create", err, res);
