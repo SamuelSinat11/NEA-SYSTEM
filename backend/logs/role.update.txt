@@ -1,0 +1,2 @@
+[2025-05-27 11:16:34] Error: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ': status WHERE role_id = NULL' at line 1
+

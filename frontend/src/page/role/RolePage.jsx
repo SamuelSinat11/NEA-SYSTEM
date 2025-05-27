@@ -46,6 +46,7 @@ function RolePage() {
     setEditingItem(item);
     setModalTitle("Edit Role");
     form.setFieldsValue({
+      id: item.id, // include id for update
       code: item.code,
       name: item.name,
     });
@@ -80,24 +81,26 @@ function RolePage() {
     setEditingItem(null);
   };
 
-  const onFinish = async (values) => {
-    try {
-      let res;
-      if (editingItem) {
-        res = await request(`role/${editingItem.id}`, "put", values);
-      } else {
-        res = await request("role", "post", values);
-      }
+  const onFinish = async (item) => {
+    const data = {
+      id: form.getFieldValue("id"),
+      code: item.code,
+      name: item.name,
+    };
 
+    const method = data.id ? "put" : "post";
+
+    try {
+      const res = await request("role", method, data);
       if (res && !res.error) {
-        message.success(res.message || (editingItem ? "Role updated!" : "Role created!"));
+        message.success(res.message || "Success!");
         fetchList();
         handleCancel();
       } else {
         message.warning(res.error || "Something went wrong!");
       }
     } catch (error) {
-      message.error("Failed to submit form!");
+      message.error("Request failed!");
     }
   };
 
@@ -182,12 +185,18 @@ function RolePage() {
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}
+        destroyOnClose
       >
         <Form
           form={form}
           layout="vertical"
           onFinish={onFinish}
         >
+          {/* Hidden ID field */}
+          <Form.Item name="id" hidden>
+            <Input />
+          </Form.Item>
+
           <Form.Item
             name="code"
             label="Code"

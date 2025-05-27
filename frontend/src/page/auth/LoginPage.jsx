@@ -36,7 +36,7 @@ const LoginPage = () => {
     <div className="flex min-h-screen bg-gray-100 items-center justify-center p-4">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6 space-y-6">
         <div className="text-center">
-          <img className="w-40 h-40 mx-auto mb-3" src="./src/assets/nea.png" alt="Logo" />
+          <img className="w-60 h-60 mx-auto mb-3" src="./src/assets/Tep.png" alt="Logo" />
           <p className="text-gray-500">Please login to your account:</p>
         </div>
 

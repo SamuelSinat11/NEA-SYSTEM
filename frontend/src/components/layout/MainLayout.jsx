@@ -127,7 +127,7 @@ const MainLayout = () => {
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center">
               <a href="#" className="flex">
-                <img className="w-16 md:w-20 lg:w-24 xl:w-16 h-auto" src="./src/assets/nea.png" alt="Logo" />
+                <img className="w- md:w-20 lg:w-24 xl:w-16 h-auto" src="./src/assets/logo1.png" alt="Logo" />
               </a>
             </div>
 
@@ -149,7 +149,7 @@ const MainLayout = () => {
                   </div>
                 </Dropdown>
 
-                <img className="w-10 h-10 rounded-full object-cover border-2 border-white" src="./src/assets/nea.png" alt="Profile" />
+                <img className="w-10 h-10 rounded-full object-cover border-2 border-white" src="./src/assets/Tep.png" alt="Profile" />
               </div>
             </div>
           </div>
