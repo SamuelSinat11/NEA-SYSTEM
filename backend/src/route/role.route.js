@@ -1,5 +1,4 @@
 const {getAll, create, update, remove, getOne, multiple} = require ("../controller/role.controller.js");
-const validate_token = require("../controller/auth.controller.js").validate_token;
 const role = (app) => { 
     
     app.get("/api/role", getAll); 

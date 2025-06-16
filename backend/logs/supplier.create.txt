@@ -1,0 +1,28 @@
+[2025-06-16 23:10:38] Error: Column 'name' cannot be null
+
+[2025-06-16 23:10:57] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:11:18] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:11:44] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:12:01] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:12:51] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:13:25] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:13:31] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:17:41] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:18:13] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:18:13] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:18:14] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:18:14] Error: Duplicate entry 'SUP001' for key 'code'
+
+[2025-06-16 23:25:53] Error: Duplicate entry 'SUP001' for key 'code'
+

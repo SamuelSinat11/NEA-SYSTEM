@@ -9,6 +9,7 @@ const {auth} = require("./src/route/auth.route.js");
 const {category} = require("./src/route/category.route.js");
 const {role} = require("./src/route/role.route.js");
 const {seeker} = require("./src/route/seeker.route.js");
+const {supplier} = require("./src/route/supplier.route.js"); 
 
 
 // call route 
@@ -16,6 +17,7 @@ auth(app);
 category(app); 
 role(app); 
 seeker(app); 
+supplier(app);
 
 
 app.get("/", (req, res) => { 

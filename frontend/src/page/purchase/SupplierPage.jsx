@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "antd"; // ✅ Import Table
+import { Table, Button, Space, message } from "antd"; // ✅ Added Space and message
 import { request } from "../../util/request";
 import MainPage from "../../components/layout/MainPage";
 
 function SupplierPage() {
   const [state, setState] = useState({
     list: [],
-    loading: false,
   });
 
   useEffect(() => {
@@ -14,30 +13,52 @@ function SupplierPage() {
   }, []);
 
   const getList = async () => {
-    setState((prev) => ({ ...prev, loading: true }));
     try {
       const res = await request("supplier", "get");
-      if (res && !res.error) {
-        setState((prev) => ({ ...prev, list: res.list || [] }));
+      if (res && res.list) {
+        setState((prev) => ({ ...prev, list: res.list }));
+      } else {
+        message.warning("No supplier data returned.");
       }
     } catch (error) {
-      console.error("Failed to fetch suppliers:", error);
-    } finally {
-      setState((prev) => ({ ...prev, loading: false }));
+      message.error("Error fetching supplier list.");
+    }
+  };
+
+  const save = async () => {
+    const params = {
+      name: "Samuel",
+      code: "SUP003",
+      tel: "01234634345278",
+      email: "test@samuel.com",
+      address: "Phnom Penh",
+      website: "https://example.com",
+      note: "Test note",
+      // remove `create_by` if your backend sets it from auth
+    };
+
+    try {
+      const res = await request("supplier", "post", params);
+      message.success("Saved successfully!");
+      getList(); // Refresh list
+    } catch (error) {
+      message.error("Failed to save supplier.");
     }
   };
 
   return (
-    <MainPage>
+    <MainPage loading={false}>
+      <Button onClick={save} type="primary" style={{ marginBottom: 16 }}>
+        Save
+      </Button>
       <Table
         dataSource={state.list}
-        loading={state.loading}
-        rowKey="id" // ✅ Ensure each row has a unique key
+        rowKey="id"
         columns={[
           {
             key: "name",
             title: "Name",
-            dataIndex: "name", // ✅ Proper field from data
+            dataIndex: "name",
           },
           {
             key: "email",
@@ -45,9 +66,37 @@ function SupplierPage() {
             dataIndex: "email",
           },
           {
-            key: "phone",
+            key: "tel",
             title: "Phone",
-            dataIndex: "phone",
+            dataIndex: "tel",
+          },
+          {
+            key: "code",
+            title: "Code",
+            dataIndex: "code",
+          },
+          {
+            key: "address",
+            title: "Address",
+            dataIndex: "address",
+          },
+          {
+            key: "action",
+            title: "Action",
+            render: (_, record) => (
+              <Space>
+                <Button type="primary" onClick={() => console.log("Edit", record)}>
+                  Edit
+                </Button>
+                <Button
+                  type="primary"
+                  danger
+                  onClick={() => console.log("Delete", record)}
+                >
+                  Delete
+                </Button>
+              </Space>
+            ),
           },
         ]}
       />
