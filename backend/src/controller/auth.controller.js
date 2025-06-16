@@ -16,8 +16,10 @@ const getList = async (req, res) => {
         " FROM users u " +
         " INNER JOIN role r ON (u.role_id = r.id)";
         const [list] = await db.query(sql);
+        const [role] = await db.query("SELECT id as value, name as label FROM role ")
         res.json({
             list,
+            role, 
         });
     } catch (err) {
         logError("auth.getList", err, res);
@@ -137,7 +139,7 @@ const validate_token = () => {
 };
 
 const getAccessToken = async (paramData) => {
-    return jwt.sign({ data: paramData }, keyToken, { expiresIn: "1d" });
+    return jwt.sign({ data: paramData }, keyToken, { expiresIn: "20d" });
 };
 
 module.exports = {

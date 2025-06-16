@@ -1,4 +1,4 @@
-const {getAll, create, update, remove} = require("../controller/category.controller.js");
+const {getAll, create, update, remove } = require("../controller/category.controller.js");
 
 const category = (app) => { 
 
