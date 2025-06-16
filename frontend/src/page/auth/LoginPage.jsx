@@ -37,7 +37,7 @@ const LoginPage = () => {
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6 space-y-6">
         <div className="text-center">
           <img className="w-60 h-60 mx-auto mb-3" src="./src/assets/Tep.png" alt="Logo" />
-          <p className="text-gray-500">Please login to your account:</p>
+          <p className="text-gray-500">សូមវាយបញ្ចូលទៅកាន់គណនីរបស់អ្នក ៖</p>
         </div>
 
         <Form

@@ -76,6 +76,17 @@ ALTER TABLE `order_detail`
 ADD FOREIGN KEY (product_id) REFERENCES `product`(id); 
 
 
+ALTER TABLE `purchase`
+ADD FOREIGN KEY (supplier_id) REFERENCES `supplier`(id); 
+
+
+ALTER TABLE purchase_product
+ADD FOREIGN KEY (purchase_id) REFERENCES  `purchase`(id); 
+
+ALTER TABLE `purchase_product`
+ADD FOREIGN KEY (product_id) REFERENCES  `product`(id); 
+
+
 
 -- supplier 
 CREATE TABLE supplier (
@@ -146,4 +157,61 @@ CREATE TABLE order_detail (
     discount DECIMAL(7,2) DEFAULT 0, 
     total DECIMAL(7,2) DEFAULT 0
 ); 
+
+
+-- purchase 
+CREATE TABLE purchase (
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    supplier_id int(11), 
+    ref varchar(255) NOT NULL, 
+    shipp_company varchar(255) DEFAULT NULL, 
+    paid_cost DECIMAL(7,2) DEFAULT 0, 
+    paid_date datetime, 
+    status varchar(120) DEFAULT NULL, 
+    create_by varchar(120) DEFAULT NULL, 
+    create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
+); 
+
+
+-- purchase product 
+CREATE TABLE purchase_product (
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    purchase_id int(11), 
+    product_id int(11), 
+    qty int(11) DEFAULT 0, 
+    cost DECIMAL(7,2) DEFAULT 0, 
+    discount DECIMAL(7,2) DEFAULT 0, 
+    amount DECIMAL (7,2) DEFAULT 0, 
+    retail_price DECIMAL(7,2) DEFAULT 0, 
+    remark text DEFAULT NULL, 
+    status varchar(120) DEFAULT NULL, 
+    create_by varchar(120) DEFAULT NULL, 
+    create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
+); 
+
+
+-- expense_type 
+CREATE TABLE expense_type (
+    id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    name varchar(255) NOT NULL, 
+    code varchar(255) NOT NULL
+); 
+
+-- expense 
+CREATE TABLE expense (
+    id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    expense_type_id INT(11), 
+    ref_no VARCHAR(255) NOT NULL, 
+    name varchar(255) NOT NULL, 
+    amount DECIMAL(7,2) DEFAULT 0,
+    remark TEXT DEFAULT NULL, 
+    expense_date datetime, 
+    create_by varchar(120) DEFAULT NULL, 
+    create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
+); 
+
+ALTER TABLE `expense`
+ADD FOREIGN KEY (expense_type_id) REFERENCES expense_type(id); 
+
+
 
