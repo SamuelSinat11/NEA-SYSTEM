@@ -9,6 +9,7 @@ import RolePage from "./page/role/RolePage";
 import UserPage from "./page/user/UserPage";
 import SupplierPage from "./page/purchase/SupplierPage";
 import CategoryPage from "./page/category/CategoryPage"; 
+import ProductPage from "./page/product/ProductPage";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/supplier" element={<SupplierPage />} /> 
           <Route path="/category" element={<CategoryPage />} /> 
           <Route path="/seekers" element={<SeekersPage />} />
+          <Route path="/product" element={<ProductPage />} /> 
           <Route path="*" element={<h1>404-Route Not Found </h1>} />
         </Route>
 

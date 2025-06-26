@@ -12,8 +12,10 @@ import {
 import { request } from "../../util/request";
 import MainPage from "../../components/layout/MainPage";
 import dayjs from "dayjs";
+import { configStore } from "../../../store/configStore";
 
-function CategoryPage() {
+function ProductPage() {
+  const { config, setConfig } = configStore(); // Correct: access setConfig
   const [form] = Form.useForm();
   const [state, setState] = useState({
     list: [],
@@ -28,8 +30,13 @@ function CategoryPage() {
 
   const getList = async () => {
     try {
-      const res_config = await request("config", "get"); 
-      console.log(res_config)
+      // Load global config
+      const res_config = await request("config", "get");
+      if (res_config) {
+        setConfig(res_config); // ✅ Correctly update global store
+      }
+
+      // Load product/category list
       const res = await request("category", "get");
       if (res && res.list) {
         setState((prev) => ({ ...prev, list: res.list }));
@@ -37,7 +44,7 @@ function CategoryPage() {
         message.warning("No category data returned.");
       }
     } catch (error) {
-      message.error("Error fetching category list.");
+      message.error("Error fetching data.");
     }
   };
 
@@ -99,7 +106,8 @@ function CategoryPage() {
       category.name?.toLowerCase().includes(search) ||
       category.description?.toLowerCase().includes(search) ||
       String(category.status).toLowerCase().includes(search) ||
-      (category.create_at && dayjs(category.create_at).format("DD/MM/YYYY").toLowerCase().includes(search))
+      (category.create_at &&
+        dayjs(category.create_at).format("DD/MM/YYYY").toLowerCase().includes(search))
     );
   });
 
@@ -122,6 +130,15 @@ function CategoryPage() {
           onSearch={handleSearch}
           onChange={(e) => handleSearch(e.target.value)}
           value={state.searchText}
+        />
+        <Select
+          placeholder="Category"
+          allowClear
+          style={{ width: 200, marginLeft: 16 }}
+          options={config?.category?.map((item) => ({
+            label: item.name,
+            value: item.id,
+          }))}
         />
       </div>
 
@@ -193,7 +210,7 @@ function CategoryPage() {
             key: "create_at",
             title: "Created At",
             dataIndex: "create_at",
-            render: (value) => value ? dayjs(value).format("DD/MM/YYYY") : "-",
+            render: (value) => (value ? dayjs(value).format("DD/MM/YYYY") : "-"),
           },
           {
             key: "action",
@@ -219,4 +236,4 @@ function CategoryPage() {
   );
 }
 
-export default CategoryPage;
+export default ProductPage;
