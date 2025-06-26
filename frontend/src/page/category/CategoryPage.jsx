@@ -7,19 +7,20 @@ import {
   Input,
   Modal,
   Form,
+  Select,
 } from "antd";
 import { request } from "../../util/request";
 import MainPage from "../../components/layout/MainPage";
 import dayjs from "dayjs";
 
-function SupplierPage() {
+function CategoryPage() {
   const [form] = Form.useForm();
   const [state, setState] = useState({
     list: [],
     visible: false,
     searchText: "",
   });
-  const [editMode, setEditMode] = useState(false); // To determine edit vs new mode
+  const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
     getList();
@@ -27,31 +28,31 @@ function SupplierPage() {
 
   const getList = async () => {
     try {
-      const res = await request("supplier", "get");
+      const res = await request("category", "get");
       if (res && res.list) {
         setState((prev) => ({ ...prev, list: res.list }));
       } else {
-        message.warning("No supplier data returned.");
+        message.warning("No category data returned.");
       }
     } catch (error) {
-      message.error("Error fetching supplier list.");
+      message.error("Error fetching category list.");
     }
   };
 
   const handleSave = async (values) => {
     try {
       if (values.id) {
-        await request(`supplier/${values.id}`, "put", values);
+        await request(`category/${values.id}`, "put", values);
         message.success("Updated successfully!");
       } else {
-        await request("supplier", "post", values);
+        await request("category", "post", values);
         message.success("Saved successfully!");
       }
 
       closeModal();
       getList();
     } catch (error) {
-      message.error("Failed to save supplier.");
+      message.error("Failed to save category.");
     }
   };
 
@@ -73,31 +74,30 @@ function SupplierPage() {
 
   const handleDelete = (record) => {
     Modal.confirm({
-      title: "Are you sure you want to delete this supplier?",
+      title: "Are you sure you want to delete this category?",
       content: `Name: ${record.name}`,
       okText: "Yes, Delete",
       okType: "danger",
       cancelText: "Cancel",
       onOk: async () => {
         try {
-          await request("supplier", "delete", { id: record.id });
+          await request("category", "delete", { id: record.id });
           message.success("Deleted successfully!");
-          getList(); // refresh list
+          getList();
         } catch (error) {
-          message.error("Failed to delete supplier.");
+          message.error("Failed to delete category.");
         }
       },
     });
   };
 
-  const filteredList = state.list.filter((supplier) => {
+  const filteredList = state.list.filter((category) => {
     const search = state.searchText.toLowerCase();
     return (
-      supplier.name?.toLowerCase().includes(search) ||
-      supplier.email?.toLowerCase().includes(search) ||
-      supplier.tel?.toLowerCase().includes(search) ||
-      supplier.code?.toLowerCase().includes(search) ||
-      supplier.address?.toLowerCase().includes(search)
+      category.name?.toLowerCase().includes(search) ||
+      category.description?.toLowerCase().includes(search) ||
+      String(category.status).toLowerCase().includes(search) ||
+      (category.create_at && dayjs(category.create_at).format("DD/MM/YYYY").toLowerCase().includes(search))
     );
   });
 
@@ -114,7 +114,7 @@ function SupplierPage() {
           New
         </Button>
         <Input.Search
-          placeholder="Search by name, email, phone..."
+          placeholder="Search by name, description, status..."
           style={{ width: 300, marginLeft: 16 }}
           allowClear
           onSearch={handleSearch}
@@ -125,7 +125,7 @@ function SupplierPage() {
 
       <Modal
         open={state.visible}
-        title={editMode ? "Edit Supplier" : "New Supplier"}
+        title={editMode ? "Edit Category" : "New Category"}
         onCancel={closeModal}
         footer={null}
         destroyOnClose
@@ -142,28 +142,22 @@ function SupplierPage() {
           >
             <Input placeholder="Enter name" />
           </Form.Item>
+
+          <Form.Item name="description" label="Description">
+            <Input placeholder="Enter product description" />
+          </Form.Item>
+
           <Form.Item
-            name="code"
-            label="Code"
-            rules={[{ required: true, message: "Code is required" }]}
+            name="status"
+            label="Status"
+            rules={[{ required: true, message: "Status is required" }]}
           >
-            <Input placeholder="Enter supplier code" />
+            <Select placeholder="Select status">
+              <Select.Option value={1}>Active</Select.Option>
+              <Select.Option value={0}>Inactive</Select.Option>
+            </Select>
           </Form.Item>
-          <Form.Item name="tel" label="Phone">
-            <Input placeholder="Enter phone number" />
-          </Form.Item>
-          <Form.Item name="email" label="Email">
-            <Input placeholder="Enter email" />
-          </Form.Item>
-          <Form.Item name="address" label="Address">
-            <Input placeholder="Enter address" />
-          </Form.Item>
-          <Form.Item name="website" label="Website">
-            <Input placeholder="Enter website URL" />
-          </Form.Item>
-          <Form.Item name="note" label="Note">
-            <Input.TextArea rows={2} placeholder="Enter notes" />
-          </Form.Item>
+
           <Space style={{ display: "flex", justifyContent: "flex-end" }}>
             <Button onClick={closeModal}>Cancel</Button>
             <Button type="primary" htmlType="submit">
@@ -183,31 +177,22 @@ function SupplierPage() {
             dataIndex: "name",
           },
           {
-            key: "email",
-            title: "Email",
-            dataIndex: "email",
+            key: "description",
+            title: "Description",
+            dataIndex: "description",
           },
           {
-            key: "tel",
-            title: "Phone",
-            dataIndex: "tel",
-          },
-          {
-            key: "code",
-            title: "Code",
-            dataIndex: "code",
-          },
-          {
-            key: "address",
-            title: "Address",
-            dataIndex: "address",
+            key: "status",
+            title: "Status",
+            dataIndex: "status",
+            render: (status) => (status === 1 ? "Active" : "Inactive"),
           },
           {
             key: "create_at",
-            title: "create_at", 
+            title: "Created At",
             dataIndex: "create_at",
-            render:(value) => dayjs (value).format("DD/MM/YYYY"), 
-          }, 
+            render: (value) => value ? dayjs(value).format("DD/MM/YYYY") : "-",
+          },
           {
             key: "action",
             title: "Action",
@@ -232,4 +217,4 @@ function SupplierPage() {
   );
 }
 
-export default SupplierPage;
+export default CategoryPage;

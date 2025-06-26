@@ -2,9 +2,9 @@ const {db} = require("../config/db.js");
 const {logError} = require("../config/service.js");
 
 // Get the category data list form using api 
-const getAll = async (req, res) => { 
+const getList = async (req, res) => { 
     try { 
-    const [data] = await db.query("SELECT * FROM categorys;");
+    const [data] = await db.query("SELECT * FROM category;");
     res.json({
         list: data, 
     }); 
@@ -15,25 +15,27 @@ const getAll = async (req, res) => {
 };
 
 const create = async (req, res) => {
-   try{ 
-    var sql = "INSERT INTO category(name,description,parent_id,status) VALUES(:name,:description,:parent_id,:status)";
-    var param = {
-        name: req.body.name, 
-        description: req.body.description, 
-        parent_id: req.body.parent_id, 
-        status: req.body.status, 
-    }
-    
-    const [data] = await db.query(sql, param); 
-    res.json({ 
-        
-        data: data, 
-    }); 
+  try {
+    const sql = "INSERT INTO category (name, description, parent_id, status) VALUES (?, ?, ?, ?)";
+    const param = [
+      req.body.name,
+      req.body.description,
+      req.body.parent_id,
+      req.body.status,
+    ];
+
+    const [result] = await db.query(sql, param);
+
+    res.json({
+      param: param, 
+      message: "Insert success!",
+    });
+
    } catch(err) {
-    logError("category.create", err, res);
-    // res.sendStatus(500).message("Internal Server Error");
-   }
-}; 
+        logError("supplier.create", err, res);
+    }
+};
+
 
 const update = async(req, res) => {
    try { 
@@ -73,7 +75,7 @@ const remove = (req, res) => {
 }; 
 
 module.exports = { 
-    getAll, 
+    getList, 
     create, 
     update, 
     remove

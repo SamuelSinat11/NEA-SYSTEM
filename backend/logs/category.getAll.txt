@@ -2,3 +2,5 @@
 
 [2025-03-11 13:05:36] Error: Table 'nea_system.categorys' doesn't exist
 
+[2025-06-26 10:05:31] Error: Table 'development.categorys' doesn't exist
+

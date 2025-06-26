@@ -26,3 +26,7 @@
 
 [2025-06-16 23:25:53] Error: Duplicate entry 'SUP001' for key 'code'
 
+[2025-06-26 10:52:12] Error: Column 'parent_id' cannot be null
+
+[2025-06-26 10:53:20] Error: Column 'parent_id' cannot be null
+

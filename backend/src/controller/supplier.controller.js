@@ -39,57 +39,46 @@ const create = async(req, res) => {
     }
 }; 
 
-// Create the multiple data using api 
-const multiple = async(req, res) => {
-    try { 
-        var sql = "INSERT INTO role(name, code, status) VALUES :arrRecord"; 
-        var param = {
-            arrRecord: req.body.arr_role, 
-        }
-        const [data] = await db.query(sql, param); 
-        res.json({ 
-            message: "Insert" + req.body.arr_role.length + " Record",
-            list: data, 
-        });
-    } catch(err) {
-        logError("role.create", err, res);
-    }
-}; 
 
 // update the role data using api 
 const update = async(req, res) => {
-    try { 
-        var sql = "UPDATE role SET name = :name, code = :code, status = : status WHERE role_id = :role_id"; 
-        var param = {
-            role_id: req.body.role_id, 
-            name: req.body.name, 
-            code: req.body.code, 
-            status: req.body.status, 
-        }
-        const [data] = await db.query(sql, param); 
+   try { 
+        var sql = "UPDATE supplier set name=:name, code=:code, tel=:tel, email=:email, address=:address, website=:website, note=:note"; 
+        var [data] = await db.query(sql, {
+            ...req.body, 
+        }); 
+
         res.json({ 
-            list: data, 
+            data: data, 
+            message: "Update success!",
         });
     } catch(err) {
-        logError("role.update", err, res);
+        logError("supplier.update", err, res);
     }
 }; 
 
 // Delete the role data using api 
-const remove = (req, res) => { 
-    try { 
-        var sql = "DELETE FROM role WHERE role_id = :role_id"; 
-        var param = {
-            role_id: req.body.role_id, 
-        }
-        const [data] = db.query(sql, param); 
-        res.json({ 
-            data: data, 
-        }); 
-    } catch(err) {
-        logError("role.remove", err, res);
+const remove = async (req, res) => {
+  try {
+    const { id } = req.body;
+
+    if (!id) {
+      return res.status(400).json({ message: "ID is required" });
     }
-}; 
+
+    const [result] = await db.query(
+      "DELETE FROM supplier WHERE id = :id",
+      { id }
+    );
+
+    res.json({
+      data: result,
+      message: "Data deleted successfully!",
+    });
+  } catch (err) {
+    logError("remove.supplier", err, res);
+  }
+};
 
 
 module.exports = { 
@@ -97,7 +86,6 @@ module.exports = {
     create, 
     update, 
     remove, 
-    multiple
 }
 
 

@@ -1,0 +1,16 @@
+[2025-06-26 10:05:37] Error: Unknown column 'parent_id' in 'field list'
+
+[2025-06-26 10:18:37] Error: Column 'parent_id' cannot be null
+
+[2025-06-26 10:18:53] Error: Column 'parent_id' cannot be null
+
+[2025-06-26 10:46:19] Error: Column 'parent_id' cannot be null
+
+[2025-06-26 10:46:36] Error: Unknown column 'data' in 'field list'
+
+[2025-06-26 10:47:57] Error: Column 'parent_id' cannot be null
+
+[2025-06-26 10:48:41] Error: Column 'parent_id' cannot be null
+
+[2025-06-26 10:50:22] Error: Column 'parent_id' cannot be null
+
