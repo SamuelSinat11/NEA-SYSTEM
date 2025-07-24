@@ -47,7 +47,7 @@ CREATE TABLE customer (
     tel varchar(18) NOT NULL UNIQUE, 
     email varchar(120) DEFAULT NULL UNIQUE, 
     address text DEFAULT NULL, 
-    type varchar(120) DEFAULT NULL 
+    type varchar(120) DEFAULT NULL,  
     create_by varchar(120) DEFAULT NULL, 
     create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
 ); 
@@ -86,6 +86,8 @@ ADD FOREIGN KEY (purchase_id) REFERENCES  `purchase`(id);
 ALTER TABLE `purchase_product`
 ADD FOREIGN KEY (product_id) REFERENCES  `product`(id); 
 
+ALTER TABLE `expense`
+ADD FOREIGN KEY (expense_type_id) REFERENCES expense_type(id); 
 
 
 -- supplier 
@@ -210,8 +212,29 @@ CREATE TABLE expense (
     create_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
 ); 
 
-ALTER TABLE `expense`
-ADD FOREIGN KEY (expense_type_id) REFERENCES expense_type(id); 
+
+-- Record Test 
+INSERT INTO `category`(`id`, `name`, `description`, `status`, `create_at`) VALUES
+(1, 'Electronics', 'Devices and gadgets', 'Active', NOW()),
+(2, 'Furniture', 'Home and office furniture', 'Active', NOW()),
+(3, 'Clothing', 'Men and women apparel', 'Active', NOW()),
+(4, 'Books', 'Various genres of books', 'Active', NOW()),
+(5, 'Sports', 'Sports equipment and accessories', 'Active', NOW()),
+(6, 'Beauty', 'Cosmetics and skincare products', 'Active', NOW()),
+(7, 'Toys', 'Children’s toys and games', 'Active', NOW()),
+(8, 'Automotive', 'Car parts and accessories', 'Active', NOW()),
+(9, 'Groceries', 'Daily food and beverage items', 'Active', NOW()),
+(10, 'Stationery', 'Office and school supplies', 'Active', NOW());
 
 
-
+INSERT INTO `supplier`(`id`, `name`, `code`, `tel`, `email`, `address`, `website`, `note`, `create_by`, `create_at`) VALUES
+(1, 'Supplier A', 'SUP-A', '012345678', 'a@example.com', 'Address A', 'www.suppliera.com', 'First supplier', 'Admin', NOW()),
+(2, 'Supplier B', 'SUP-B', '023456789', 'b@example.com', 'Address B', 'www.supplierb.com', 'Second supplier', 'Admin', NOW()),
+(3, 'Supplier C', 'SUP-C', '034567890', 'c@example.com', 'Address C', 'www.supplierc.com', 'Third supplier', 'Admin', NOW()),
+(4, 'Supplier D', 'SUP-D', '045678901', 'd@example.com', 'Address D', 'www.supplierd.com', 'Fourth supplier', 'Admin', NOW()),
+(5, 'Supplier E', 'SUP-E', '056789012', 'e@example.com', 'Address E', 'www.suppliere.com', 'Fifth supplier', 'Admin', NOW()),
+(6, 'Supplier F', 'SUP-F', '067890123', 'f@example.com', 'Address F', 'www.supplierf.com', 'Sixth supplier', 'Admin', NOW()),
+(7, 'Supplier G', 'SUP-G', '078901234', 'g@example.com', 'Address G', 'www.supplierg.com', 'Seventh supplier', 'Admin', NOW()),
+(8, 'Supplier H', 'SUP-H', '089012345', 'h@example.com', 'Address H', 'www.supplierh.com', 'Eighth supplier', 'Admin', NOW()),
+(9, 'Supplier I', 'SUP-I', '090123456', 'i@example.com', 'Address I', 'www.supplieri.com', 'Ninth supplier', 'Admin', NOW()),
+(10, 'Supplier J', 'SUP-J', '091234567', 'j@example.com', 'Address J', 'www.supplierj.com', 'Tenth supplier', 'Admin', NOW());

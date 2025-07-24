@@ -30,3 +30,7 @@
 
 [2025-06-26 10:53:20] Error: Column 'parent_id' cannot be null
 
+[2025-06-27 09:55:34] Error: Unknown column 'parent_id' in 'field list'
+
+[2025-06-27 09:56:33] Error: Unknown column 'parent_id' in 'field list'
+

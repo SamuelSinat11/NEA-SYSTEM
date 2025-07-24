@@ -16,6 +16,15 @@ const getList = async (req, res) => {
       { label: "Issues", value: "Issues" },
     ];
 
+    const brand = [ 
+      {name: "Apple", country: "USA"}, 
+      {name: "Samsung", country: "South Korea"}, 
+      {name: "Dell", country: "USA"}, 
+      {name: "HP", country: "USA"}, 
+      {name: "Lenovo", country: "Taiwan"}, 
+      {name: "Asus", country: "China"},
+    ]
+
     res.json({
       category,
       role,

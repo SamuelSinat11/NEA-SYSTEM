@@ -1,0 +1,18 @@
+- upload on image 
+- upload multiple image 
+- remove image | update image 
+- image path 
+- generate_new_barcode 
+- check_is_existing barcode 
+- insert mutiple records to table 
+
+- form data (client)
+- file/image (client/node.js)
+- multer library (node.js)
+    - upload 
+    - remove 
+- store image 
+    - store name in DB (image(varchar(250)))
+    - file in server (apache) | 
+    
+id	category_id	name brand	description	qty	price discount	status	image	

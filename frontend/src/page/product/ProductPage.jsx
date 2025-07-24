@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 import { configStore } from "../../../store/configStore";
 
 function ProductPage() {
-  const { config, setConfig } = configStore(); // Correct: access setConfig
+  const { config, setConfig } = configStore();
   const [form] = Form.useForm();
   const [state, setState] = useState({
     list: [],
@@ -23,6 +23,7 @@ function ProductPage() {
     searchText: "",
   });
   const [editMode, setEditMode] = useState(false);
+  const [brandFilter, setBrandFilter] = useState(null); // ✅ Brand filter state
 
   useEffect(() => {
     getList();
@@ -30,13 +31,11 @@ function ProductPage() {
 
   const getList = async () => {
     try {
-      // Load global config
       const res_config = await request("config", "get");
       if (res_config) {
-        setConfig(res_config); // ✅ Correctly update global store
+        setConfig(res_config);
       }
 
-      // Load product/category list
       const res = await request("category", "get");
       if (res && res.list) {
         setState((prev) => ({ ...prev, list: res.list }));
@@ -57,7 +56,6 @@ function ProductPage() {
         await request("category", "post", values);
         message.success("Saved successfully!");
       }
-
       closeModal();
       getList();
     } catch (error) {
@@ -100,16 +98,21 @@ function ProductPage() {
     });
   };
 
-  const filteredList = state.list.filter((category) => {
-    const search = state.searchText.toLowerCase();
-    return (
-      category.name?.toLowerCase().includes(search) ||
-      category.description?.toLowerCase().includes(search) ||
-      String(category.status).toLowerCase().includes(search) ||
-      (category.create_at &&
-        dayjs(category.create_at).format("DD/MM/YYYY").toLowerCase().includes(search))
-    );
-  });
+  const filteredList = state.list
+    .filter((category) => {
+      const search = state.searchText.toLowerCase();
+      return (
+        category.name?.toLowerCase().includes(search) ||
+        category.description?.toLowerCase().includes(search) ||
+        String(category.status).toLowerCase().includes(search) ||
+        (category.create_at &&
+          dayjs(category.create_at).format("DD/MM/YYYY").toLowerCase().includes(search))
+      );
+    })
+    .filter((category) => {
+      if (!brandFilter) return true; // No brand selected, show all
+      return category.brand === brandFilter; // Filter by brand
+    });
 
   const onClickBtnEdit = (record) => {
     form.setFieldsValue(record);
@@ -139,6 +142,17 @@ function ProductPage() {
             label: item.name,
             value: item.id,
           }))}
+        />
+
+        <Select
+          placeholder="Brand"
+          allowClear
+          style={{ width: 200, marginLeft: 16 }}
+          options={config?.brand?.map((item) => ({
+            label: item.name,
+            value: item.name,
+          }))}
+          onChange={(value) => setBrandFilter(value)} // ✅ Brand filter handler
         />
       </div>
 
